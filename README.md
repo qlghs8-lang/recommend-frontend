@@ -144,3 +144,7 @@ A/B 테스트 UI
 ```bash
 git clone https://github.com/{YOUR_ID}/recommend-frontend.git
 cd recommend-frontend
+
+### 2) Install
+npm install
+
