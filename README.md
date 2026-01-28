@@ -132,3 +132,15 @@ Skeleton UI
 추천 모델 시각화
 
 A/B 테스트 UI
+
+## Run (Local)
+
+### Prerequisites
+- Node.js LTS (18+ 권장)
+- 백엔드 실행 중이어야 합니다.
+  - 기본: `http://localhost:8080`
+
+### 1) Clone
+```bash
+git clone https://github.com/{YOUR_ID}/recommend-frontend.git
+cd recommend-frontend
