@@ -1,9 +1,11 @@
-Recommend Frontend
+## Recommend Frontend
 
 개인화 콘텐츠 추천 시스템을 위한 프론트엔드 애플리케이션입니다.
 JWT 인증 기반 로그인부터 For You 추천 UI, 어드민 대시보드까지 제공합니다.
 
-Tech Stack
+--
+
+## Tech Stack
 
 React
 
@@ -14,6 +16,8 @@ Axios
 CSS Modules / Custom UI System
 
 JWT Authentication
+
+--
 
 Core Features
 Authentication
