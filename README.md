@@ -142,7 +142,7 @@ A/B 테스트 UI
 
 ```bash
 1) Clone
-git clone https://github.com/{YOUR_ID}/recommend-frontend.git
+git clone https://github.com/qlghs8-lang/recommend-frontend.git
 cd recommend-frontend
 
 2) Install
