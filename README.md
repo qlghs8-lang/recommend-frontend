@@ -19,8 +19,8 @@ JWT Authentication
 
 ---
 
-Core Features
-Authentication
+## Core Features
+## Authentication
 
 로그인 / 로그아웃
 
@@ -30,7 +30,9 @@ JWT 저장 및 자동 헤더 첨부
 
 Role 기반 라우팅
 
-User
+---
+
+## User
 
 회원가입 (약관 → 정보입력 → 완료)
 
@@ -40,7 +42,9 @@ User
 
 마이페이지 관리
 
-Content
+---
+
+## Content
 
 콘텐츠 탐색
 
@@ -48,7 +52,9 @@ Content
 
 추천 홈
 
-Recommendation UI
+---
+
+## Recommendation UI
 
 For You 추천 목록
 
@@ -58,7 +64,9 @@ Explore / Exploit 혼합 노출
 
 클릭 로그 연동
 
-Admin Dashboard
+---
+
+## Admin Dashboard
 
 추천 로그 조회
 
@@ -66,10 +74,11 @@ CTR 통계
 
 Source 별 성능 분석
 
-Run
+---
+
+## Run
 1️ Install
 npm install
-
 
 또는
 
@@ -87,7 +96,9 @@ npm start
 4️ Access
 http://localhost:3000
 
-주요 페이지
+---
+
+## 주요 페이지
 Path	Description
 /login	로그인
 /terms	약관 동의
@@ -95,7 +106,10 @@ Path	Description
 /home	추천 홈
 /mypage	마이페이지
 /admin	관리자 대시보드
-Notes
+
+---
+
+## Notes
 
 Axios interceptor로 JWT 자동 주입
 
@@ -105,7 +119,9 @@ Admin API 연동
 
 반응형 UI 대응
 
-Future Improvements
+---
+
+## Future Improvements
 
 SSR / SEO 대응 (Next.js)
 
@@ -116,9 +132,3 @@ Skeleton UI
 추천 모델 시각화
 
 A/B 테스트 UI
-
-Author
-
-박재현
-
-Portfolio Project: Personalized Recommendation System
