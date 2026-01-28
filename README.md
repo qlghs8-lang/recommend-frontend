@@ -76,28 +76,6 @@ Source 별 성능 분석
 
 ---
 
-## Run
-1️ Install
-npm install
-
-또는
-
-yarn install
-
-2️ Environment Variables
-
-프로젝트 루트에 .env 생성:
-
-REACT_APP_API_BASE_URL=http://localhost:8080
-
-3️ Start Dev Server
-npm start
-
-4️ Access
-http://localhost:3000
-
----
-
 ## 주요 페이지
 Path	Description
 /login	로그인
