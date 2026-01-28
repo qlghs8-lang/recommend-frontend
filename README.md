@@ -132,34 +132,3 @@ Skeleton UI
 추천 모델 시각화
 
 A/B 테스트 UI
-
-## Run (Local)
-
-### Prerequisites
-- Node.js LTS (18+ 권장)
-- 백엔드 실행 중이어야 합니다.
-  - 기본: `http://localhost:8080`
-
-```bash
-1) Clone
-git clone https://github.com/qlghs8-lang/recommend-frontend.git
-cd recommend-frontend
-
-2) Install
-npm install
-
-3) Create .env
-
-프론트는 백엔드 주소를 .env로 설정할 수 있습니다.
-
-echo REACT_APP_API_BASE_URL=http://localhost:8080 > .env
-
-
-프론트 axiosInstance는 REACT_APP_API_BASE_URL이 없으면 기본으로 http://localhost:8080을 사용합니다.
-그래도 README 기준으로는 위 .env 생성을 권장합니다.
-
-4) Start
-npm start
-
-
-Frontend: http://localhost:3000
