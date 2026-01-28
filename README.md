@@ -1,70 +1,120 @@
-# Getting Started with Create React App
+Recommend Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+개인화 콘텐츠 추천 시스템을 위한 프론트엔드 애플리케이션입니다.
+JWT 인증 기반 로그인부터 For You 추천 UI, 어드민 대시보드까지 제공합니다.
 
-## Available Scripts
+Tech Stack
 
-In the project directory, you can run:
+React
 
-### `npm start`
+React Router
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Axios
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+CSS Modules / Custom UI System
 
-### `npm test`
+JWT Authentication
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Core Features
+Authentication
 
-### `npm run build`
+로그인 / 로그아웃
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+JWT 저장 및 자동 헤더 첨부
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+세션 만료 전역 처리
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Role 기반 라우팅
 
-### `npm run eject`
+User
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+회원가입 (약관 → 정보입력 → 완료)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+휴대폰 인증
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+온보딩 선호 장르 설정
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+마이페이지 관리
 
-## Learn More
+Content
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+콘텐츠 탐색
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+상세 페이지
 
-### Code Splitting
+추천 홈
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Recommendation UI
 
-### Analyzing the Bundle Size
+For You 추천 목록
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+추천 사유 표시
 
-### Making a Progressive Web App
+Explore / Exploit 혼합 노출
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+클릭 로그 연동
 
-### Advanced Configuration
+Admin Dashboard
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+추천 로그 조회
 
-### Deployment
+CTR 통계
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Source 별 성능 분석
 
-### `npm run build` fails to minify
+Run
+1️ Install
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+또는
+
+yarn install
+
+2️ Environment Variables
+
+프로젝트 루트에 .env 생성:
+
+REACT_APP_API_BASE_URL=http://localhost:8080
+
+3️ Start Dev Server
+npm start
+
+4️ Access
+http://localhost:3000
+
+주요 페이지
+Path	Description
+/login	로그인
+/terms	약관 동의
+/register	회원가입
+/home	추천 홈
+/mypage	마이페이지
+/admin	관리자 대시보드
+Notes
+
+Axios interceptor로 JWT 자동 주입
+
+401/403 시 세션 만료 이벤트 발생
+
+Admin API 연동
+
+반응형 UI 대응
+
+Future Improvements
+
+SSR / SEO 대응 (Next.js)
+
+Skeleton UI
+
+무한 스크롤 추천
+
+추천 모델 시각화
+
+A/B 테스트 UI
+
+Author
+
+박재현
+
+Portfolio Project: Personalized Recommendation System
