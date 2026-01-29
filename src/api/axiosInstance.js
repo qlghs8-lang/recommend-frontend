@@ -18,8 +18,7 @@ axiosInstance.interceptors.response.use(
     const status = error?.response?.status;
     const url = error?.config?.url || "";
 
-    // ✅ 공개/인증/회원가입 관련 요청은 "세션 만료"로 취급하지 않음
-    // - 회원가입 단계는 토큰이 없거나(정상) /public이 permitAll이라야 함
+    // 공개/인증/회원가입 관련 요청은 "세션 만료"로 취급하지 않음
     const skipAuthExpired =
       url.startsWith("/public/") ||
       url.startsWith("/users") ||
