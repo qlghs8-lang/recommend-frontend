@@ -15,13 +15,13 @@ export async function getTopRated(size = 10) {
   return res.data;
 }
 
-// ✅ NEW: 상세 조회
+// 상세 조회
 export async function getContentDetail(id) {
   const res = await axiosInstance.get(`/contents/${id}`);
   return res.data;
 }
 
-// ✅ NEW: 검색(페이징/정렬/필터)
+// 검색(페이징/정렬/필터)
 export async function searchContents(params = {}) {
   const res = await axiosInstance.get("/contents/search", { params });
   return res.data; // Page 형태
