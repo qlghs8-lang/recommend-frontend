@@ -24,12 +24,12 @@ function RegisterPage() {
   const [nicknameMsg, setNicknameMsg] = useState("");
   const [nicknameChecked, setNicknameChecked] = useState(false);
 
-  // ✅ 선택 입력
+  // 선택 입력
   const [realName, setRealName] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [gender, setGender] = useState("");
 
-  // ✅ 휴대폰 인증
+  // 휴대폰 인증
   const [phone, setPhone] = useState("");
   const [phoneCode, setPhoneCode] = useState("");
   const [phoneMsg, setPhoneMsg] = useState("");
@@ -206,7 +206,7 @@ function RegisterPage() {
         realName,
         birthDate,
         gender,
-        phone, // ✅ 선택사항 그대로 전달 (검증/인증은 서버가 필요 시 처리)
+        phone,
         termsAgreements,
       });
 
@@ -235,7 +235,7 @@ function RegisterPage() {
 
         {errorMsg && <div className="auth-alert">{errorMsg}</div>}
 
-        {/* ✅ 필수 입력 */}
+        {/* 필수 입력 */}
         <div className="auth-section">
           <div className="section-head">
             <div className="section-title">필수 정보</div>
@@ -333,7 +333,7 @@ function RegisterPage() {
           </div>
         </div>
 
-        {/* ✅ 선택 입력(토글) */}
+        {/* 선택 입력(토글) */}
         <div className="auth-section">
           <div className="section-head">
             <div className="section-title">선택 정보</div>
@@ -437,7 +437,7 @@ function RegisterPage() {
           )}
         </div>
 
-        {/* ✅ 가입 버튼 */}
+        {/* 가입 버튼 */}
         <button className="main-btn" onClick={handleRegister} type="button" disabled={submitting}>
           {submitting ? "처리중..." : "회원가입 완료"}
         </button>
