@@ -16,7 +16,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
-      {/* ✅ 전역 만료 처리 */}
       <AuthWatcher />
 
       <Routes>
