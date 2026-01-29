@@ -13,10 +13,6 @@ import {
 import { recommendApi } from "../api/recommendApi";
 import { interactionApi } from "../api/interactionApi";
 
-/**
- * ✅ 기본 장르(라벨 품질용)
- * - 여기 없는 장르는 /contents/genres 로 받아온 값이 자동 추가됨
- */
 const BASE_GENRES = [
   { key: "action", label: "Action" },
   { key: "adventure", label: "Adventure" },
@@ -52,13 +48,13 @@ function HomePage() {
     bookmarked: false,
   });
 
-  // ✅ 온보딩 상태
+  // 온보딩 상태
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [onboardingMsg, setOnboardingMsg] = useState("");
   const [onboardingBusy, setOnboardingBusy] = useState(false);
 
-  // ✅ 검색 상태
+  // 검색 상태
   const [q, setQ] = useState("");
   const [typeFilter, setTypeFilter] = useState(""); // "", "MOVIE", "TV"
   const [genreFilter, setGenreFilter] = useState(""); // "", "action"...
@@ -71,7 +67,7 @@ function HomePage() {
   const [searchPage, setSearchPage] = useState(null); // spring Page
   const [searchPageIndex, setSearchPageIndex] = useState(0);
 
-  // ✅ 장르 옵션(동적)
+  // 장르 옵션(동적)
   const [genreOptions, setGenreOptions] = useState(BASE_GENRES);
 
   const placeholderPoster = useMemo(
@@ -112,9 +108,6 @@ function HomePage() {
     [getYear, placeholderPoster, placeholderBackdrop]
   );
 
-  // =========================
-  // ✅ utils: 장르 label prettify
-  // =========================
   const prettyGenreLabel = useCallback((key) => {
     if (!key) return "";
     const k = String(key).trim().toLowerCase();
@@ -127,9 +120,7 @@ function HomePage() {
       .join(" ");
   }, []);
 
-  // =========================
-  // ✅ 내 정보 로드
-  // =========================
+  // 내 정보 로드
   useEffect(() => {
     const loadUser = async () => {
       try {
@@ -142,9 +133,7 @@ function HomePage() {
     loadUser();
   }, [navigate]);
 
-  // =========================
-  // ✅ DB 기반 장르 로드 (/contents/genres)
-  // =========================
+  // DB 기반 장르 로드 (/contents/genres)
   useEffect(() => {
     const loadGenres = async () => {
       try {
@@ -178,9 +167,7 @@ function HomePage() {
     loadGenres();
   }, [prettyGenreLabel]);
 
-  // =========================
-  // ✅ 온보딩 상태 로드
-  // =========================
+  // 온보딩 상태 로드
   useEffect(() => {
     const loadOnboarding = async () => {
       try {
@@ -202,9 +189,7 @@ function HomePage() {
     loadOnboarding();
   }, []);
 
-  // =========================
-  // ✅ 콘텐츠 로드 (기본 홈)
-  // =========================
+  // 콘텐츠 로드 (기본 홈)
   const loadContents = useCallback(async () => {
     try {
       const [trendingRaw, newRaw, topRaw, forYouReasonRaw] = await Promise.all([
@@ -243,11 +228,6 @@ function HomePage() {
     navigate("/login", { replace: true });
   };
 
-  // =========================
-  // ✅ 검색 실행 (수동 버튼 전용)
-  // - 자동 디바운스 제거
-  // - 페이지 사이즈: 10으로 고정 (요청사항)
-  // =========================
   const runSearch = useCallback(
     async (page = 0) => {
       setSearchBusy(true);
@@ -259,7 +239,7 @@ function HomePage() {
           type: typeFilter || undefined,
           genre: genreFilter || undefined,
           page,
-          size: 10, // ✅ 10개씩
+          size: 10,
           sort: sortKey,
           direction: sortDir,
         };
@@ -274,7 +254,6 @@ function HomePage() {
         setSearchPage(normalized);
         setSearchMode(true);
 
-        // ✅ 더 깔끔한 옵션: 검색 결과 없으면 hero 아예 안 건드리기
         if ((normalized.content || []).length > 0) {
           setHero(normalized.content[0]);
         }
@@ -300,9 +279,7 @@ function HomePage() {
     await loadContents();
   };
 
-  // =========================
-  // ✅ 카드 클릭
-  // =========================
+  // 카드 클릭
   const onCardClick = async (item) => {
     // 1) 추천 클릭 로그 (forYou인 경우만)
     try {
@@ -355,9 +332,7 @@ function HomePage() {
     setInteractionState(res.data);
   };
 
-  // =========================
-  // ✅ 온보딩: 장르 선택 토글 (동적 장르에도 대응)
-  // =========================
+  // 온보딩: 장르 선택 토글
   const toggleGenre = (g) => {
     setOnboardingMsg("");
     setSelectedGenres((prev) => {
@@ -405,7 +380,7 @@ function HomePage() {
         </div>
       </header>
 
-      {/* ✅ Search Bar */}
+      {/* Search Bar */}
       <div className="home-search">
         <div className="home-search-row">
           <input
@@ -478,7 +453,6 @@ function HomePage() {
           )}
         </div>
 
-        {/* ✅ 움찔 방지: hint 영역은 항상 자리 확보 */}
         <div className="home-search-hint-slot" style={{ minHeight: 18 }}>
           {searchBusy ? <div className="home-search-hint">검색중...</div> : null}
           {!searchBusy && searchError ? (
@@ -487,7 +461,7 @@ function HomePage() {
         </div>
       </div>
 
-      {/* ✅ Onboarding Modal */}
+      {/* Onboarding Modal */}
       {showOnboarding && (
         <div className="modal-backdrop" role="presentation">
           <div className="modal onboarding-modal" role="presentation">
@@ -610,7 +584,7 @@ function HomePage() {
           </section>
         )}
 
-        {/* ✅ Default Rows */}
+        {/* Default Rows */}
         {!searchMode &&
           rows.map((row) => (
             <section key={row.key} className="row">
