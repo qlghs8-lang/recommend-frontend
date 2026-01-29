@@ -26,8 +26,6 @@ function ProtectedRoute({ children, requireAdmin = false }) {
     // ADMIN 체크 필요
     const checkAdmin = async () => {
       try {
-        // axiosInstance가 Authorization 인터셉터를 붙이고 있다는 가정(대부분 그렇게 해둠)
-        // 만약 인터셉터가 없다면 headers에 Bearer 수동 추가해야 함.
         const res = await axiosInstance.get("/user/me");
         const role = res?.data?.role;
 
@@ -58,7 +56,7 @@ function ProtectedRoute({ children, requireAdmin = false }) {
 
   if (!token) return <Navigate to="/login" replace />;
 
-  // ✅ admin 필요 라우트에서 admin 아니면 home으로
+  // admin 필요 라우트에서 admin 아니면 home으로
   if (requireAdmin && !allowed) return <Navigate to="/home" replace />;
 
   return children;
