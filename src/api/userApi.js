@@ -15,7 +15,7 @@ export async function registerUser(user) {
   return res.data;
 }
 
-// ✅ MyPage용
+// MyPage용
 export async function getMe() {
   const res = await axiosInstance.get("/user/me");
   return res.data;
