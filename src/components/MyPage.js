@@ -8,7 +8,7 @@ function MyPage() {
   const navigate = useNavigate();
   const API_BASE = useMemo(() => "http://localhost:8080", []);
 
-  // ✅ 장르 옵션(서버에서 동적으로)
+  // 장르 옵션
   const [genreOptions, setGenreOptions] = useState([]); // string[]
 
   // 기본 정보
@@ -34,7 +34,7 @@ function MyPage() {
   const [currentPw, setCurrentPw] = useState("");
   const [newPw, setNewPw] = useState("");
 
-  // ✅ 온보딩(선호 장르) 수정
+  // 온보딩(선호 장르) 수정
   const [onboardingDone, setOnboardingDone] = useState(false);
   const [preferredGenres, setPreferredGenres] = useState([]); // string[]
   const [onbBusy, setOnbBusy] = useState(false);
@@ -45,7 +45,7 @@ function MyPage() {
   const [loadingMe, setLoadingMe] = useState(false);
   const [busy, setBusy] = useState(false);
 
-  // ✅ 내 정보 조회
+  // 내 정보 조회
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -67,7 +67,7 @@ function MyPage() {
         setNewNickname(nick);
         setProfileImage(data.profileImageUrl ?? "");
 
-        // ✅ 선택 정보
+        // 선택 정보
         setRealName(data.realName ?? "");
         setBirthDate(data.birthDate ?? "");
         setGender(data.gender ?? "");
@@ -88,7 +88,7 @@ function MyPage() {
     fetchMe();
   }, [navigate]);
 
-  // ✅ 온보딩(선호 장르) 조회
+  // 온보딩(선호 장르) 조회
   useEffect(() => {
     const fetchOnboarding = async () => {
       try {
@@ -105,7 +105,7 @@ function MyPage() {
     fetchOnboarding();
   }, []);
 
-  // ✅ 장르 옵션 로드(동적)
+  // 장르 옵션 로드(동적)
   useEffect(() => {
     const loadGenres = async () => {
       try {
@@ -119,7 +119,7 @@ function MyPage() {
     loadGenres();
   }, []);
 
-  // ✅ 프로필 이미지 업로드
+  // 프로필 이미지 업로드
   const handleImageUpload = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -148,7 +148,7 @@ function MyPage() {
     }
   };
 
-  // ✅ 프로필 이미지 삭제
+  // 프로필 이미지 삭제
   const handleDeleteImage = async () => {
     setBusy(true);
     setMessage("");
@@ -163,7 +163,7 @@ function MyPage() {
     }
   };
 
-  // ✅ 닉네임 변경: 백엔드 기준 /user/nickname + {nickname}
+  // 닉네임 변경: 백엔드 기준
   const handleUpdateNickname = async () => {
     if (!newNickname.trim()) {
       setMessage("닉네임을 입력해주세요.");
@@ -186,7 +186,7 @@ function MyPage() {
     }
   };
 
-  // ✅ 비밀번호 변경
+  // 비밀번호 변경
   const handleChangePassword = async () => {
     if (!currentPw || !newPw) {
       setMessage("현재 비밀번호와 새 비밀번호를 모두 입력해주세요.");
@@ -213,7 +213,7 @@ function MyPage() {
     }
   };
 
-  // ✅ 선택정보 저장(/user/extra-info)
+  // 선택정보 저장(/user/extra-info)
   const handleSaveExtraInfo = async () => {
     setBusy(true);
     setMessage("");
@@ -246,19 +246,18 @@ function MyPage() {
     }
   };
 
-  // ✅ (추가) 이미 인증된 번호면 요청/확인 버튼 비활성화
+  // 이미 인증된 번호면 요청/확인 버튼 비활성화
   const normalizedPhoneToVerify = (phoneToVerify || "").trim();
   const isAlreadyVerifiedSameNumber =
     !!phoneVerified && !!verifiedPhone && verifiedPhone === normalizedPhoneToVerify;
 
-  // ✅ 휴대폰 인증 요청
+  // 휴대폰 인증 요청
   const requestPhoneVerification = async () => {
     if (!normalizedPhoneToVerify) {
       setMessage("휴대폰 번호를 입력해주세요.");
       return;
     }
 
-    // ✅ 프론트에서도 한 번 더 차단 (UX + 실수 방지)
     if (isAlreadyVerifiedSameNumber) {
       setMessage("이미 인증된 휴대폰 번호입니다.");
       return;
@@ -277,14 +276,14 @@ function MyPage() {
     }
   };
 
-  // ✅ 휴대폰 인증 확인
+  // 휴대폰 인증 확인
   const confirmPhoneVerification = async () => {
     if (!verifyCode.trim()) {
       setMessage("인증번호를 입력해주세요.");
       return;
     }
 
-    // ✅ 이미 인증된 동일 번호면 확인도 막기
+    // 이미 인증된 동일 번호면 확인도 막기
     if (isAlreadyVerifiedSameNumber) {
       setMessage("이미 인증된 휴대폰 번호입니다.");
       return;
@@ -311,7 +310,7 @@ function MyPage() {
     }
   };
 
-  // ✅ 온보딩 장르 토글
+  // 온보딩 장르 토글
   const toggleGenre = (g) => {
     setOnbMsg("");
     setPreferredGenres((prev) => {
@@ -322,7 +321,7 @@ function MyPage() {
     });
   };
 
-  // ✅ 온보딩 장르 저장
+  // 온보딩 장르 저장
   const savePreferredGenres = async () => {
     if (preferredGenres.length < 3) {
       setOnbMsg("장르는 최소 3개 이상 선택해야 합니다.");
@@ -343,7 +342,7 @@ function MyPage() {
     }
   };
 
-  // ✅ 회원 탈퇴
+  // 회원 탈퇴
   const handleDeleteUser = async () => {
     if (!window.confirm("정말 탈퇴하시겠습니까? 되돌릴 수 없습니다.")) return;
 
@@ -432,7 +431,6 @@ function MyPage() {
 
           <div className="ui-divider" />
 
-          {/* ✅ Preferred Genres (Onboarding) */}
           <div className="my-block">
             <div className="my-block-title">
               선호 장르 설정{" "}
@@ -526,7 +524,6 @@ function MyPage() {
 
           <div className="ui-divider" />
 
-          {/* ✅ Extra Info */}
           <div className="my-block">
             <div className="my-block-title">추가 정보(선택)</div>
 
@@ -567,7 +564,7 @@ function MyPage() {
 
           <div className="ui-divider" />
 
-          {/* ✅ Phone Verification */}
+          {/* Phone Verification */}
           <div className="my-block">
             <div className="my-block-title">휴대폰 인증</div>
 
