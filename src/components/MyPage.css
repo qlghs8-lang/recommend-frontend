@@ -145,7 +145,7 @@
 }
 
 .my-page select option {
-  background-color: #fff;   /* 드롭다운은 OS가 밝게 그림 */
+  background-color: #fff;
   color: #111;
 }
 
