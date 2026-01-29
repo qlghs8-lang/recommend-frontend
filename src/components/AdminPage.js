@@ -6,32 +6,19 @@ import "./AdminPage.css";
 
 function AdminPage() {
   const navigate = useNavigate();
-
-  // =========================
-  // 탭
-  // =========================
   const [tab, setTab] = useState("recommend"); // "recommend" | "contents"
-
-  // =========================
-  // (A) 추천 대시보드/로그 상태 (기존 그대로)
-  // =========================
   const [days, setDays] = useState(7);
-
   const [source, setSource] = useState("");
   const [clicked, setClicked] = useState(""); // "", "true", "false"
   const [userId, setUserId] = useState("");
   const [contentId, setContentId] = useState("");
-
   const [dash, setDash] = useState(null);
   const [logs, setLogs] = useState(null);
-
   const [page, setPage] = useState(0);
   const size = 20;
-
   const [loadingDash, setLoadingDash] = useState(false);
   const [loadingLogs, setLoadingLogs] = useState(false);
   const [error, setError] = useState("");
-
   const [selected, setSelected] = useState(null);
   const totalPages = useMemo(() => logs?.totalPages ?? 0, [logs]);
 
@@ -115,9 +102,6 @@ function AdminPage() {
 
   const closeModal = () => setSelected(null);
 
-  // =========================
-  // (B) 콘텐츠 관리 탭 상태 (NEW)
-  // =========================
   const [cPage, setCPage] = useState(0);
   const cSize = 20;
 
@@ -272,9 +256,6 @@ function AdminPage() {
     await loadContents(next);
   };
 
-  // =========================
-  // 공통
-  // =========================
   const logout = () => {
     localStorage.removeItem("token");
     navigate("/login", { replace: true });
@@ -294,7 +275,6 @@ function AdminPage() {
         </div>
       </div>
 
-      {/* ✅ 탭 */}
       <div className="admin-tabs">
         <button
           className={tab === "recommend" ? "admin-tab active" : "admin-tab"}
@@ -314,9 +294,6 @@ function AdminPage() {
 
       {error && <div className="admin-error">{error}</div>}
 
-      {/* =========================
-          탭: 추천 분석(기존)
-         ========================= */}
       {tab === "recommend" && (
         <>
           {/* KPI */}
@@ -583,9 +560,6 @@ function AdminPage() {
         </>
       )}
 
-      {/* =========================
-          탭: 콘텐츠 관리(NEW)
-         ========================= */}
       {tab === "contents" && (
         <div className="admin-section">
           <div className="admin-section-header">
