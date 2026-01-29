@@ -13,13 +13,13 @@ function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ✅ AuthWatcher 등에서 전달한 메시지 표시 (세션 만료/권한 없음 등)
+  // AuthWatcher 등에서 전달한 메시지 표시 (세션 만료/권한 없음 등)
   useEffect(() => {
     const m = location.state?.msg;
     if (m) setMsg(m);
   }, [location.state]);
 
-  // ✅ 이미 로그인된 상태면 role 확인 후 이동
+  // 이미 로그인된 상태면 role 확인 후 이동
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return;
@@ -29,7 +29,7 @@ function LoginPage() {
         const res = await axiosInstance.get("/user/me");
         const role = res?.data?.role || "";
 
-        // ✅ role 캐시(ProtectedRoute / 빠른 분기용)
+        // role 캐시(ProtectedRoute / 빠른 분기용)
         localStorage.setItem("role", role);
 
         const isAdmin = role === "ADMIN" || role === "ROLE_ADMIN";
@@ -54,7 +54,7 @@ function LoginPage() {
       localStorage.setItem("token", res.token);
       localStorage.setItem("nickname", res.nickname);
 
-      // ✅ 로그인 직후 role 확인 후 이동 + role 캐시
+      // 로그인 직후 role 확인 후 이동 + role 캐시
       const me = await axiosInstance.get("/user/me");
       const role = me?.data?.role || "";
       localStorage.setItem("role", role);
